@@ -9,6 +9,12 @@
   - 웹
     - 라이브 서버 설치
     - vscode에서 웹페이지 구성
+    - HTML에 대한 이해
+      - head, body
+      - h1~h6
+      - p
+      - 하이퍼링크
+      [참고사이트](https://developer.mozilla.org/ko/docs/Learn/HTML)
 
   
 - **0730~0801**
