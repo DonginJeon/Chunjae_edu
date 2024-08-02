@@ -14,7 +14,7 @@
       - h1~h6
       - p
       - 하이퍼링크
-      [참고사이트](https://developer.mozilla.org/ko/docs/Learn/HTML)
+      - [참고사이트](https://developer.mozilla.org/ko/docs/Learn/HTML)
 
   
 - **0730~0801**
