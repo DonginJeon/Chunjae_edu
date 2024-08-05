@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="content"></p>
+
+    <button id="click_me">Click me</button>
+</body>
+<script>
+    // #. html을 js로 가지고 오는 방법이 존재
+    // #. document라는 객체가 있음
+    // #. document = DOM(HTMl > 데이터화)
+    const clickMe = document.getElementById("click_me");
+    const text = clickMe.textContent;
+    // clickMe.textContent = "안녕";
+
+    const content = document.querySelector("#content");
+    const button = document.querySelector("#click_me");
+
+
+    // # 이벤트 리스너에는 매개변수가 두개 필요함
+    // 1. 받을 이벤트(click)
+    // 2. 행동(함수)
+
+    function changeContent(e) {
+        content.textContent = "눌러서 나타났어요";
+        content.classList.add("red");
+    }
+    button.addEventListener("click", changeContent);
+
+    console.log(button);
+    // 자바스크립트는 html 요소를 바꾸거나 띄우거나 묶어서 서버에 보내는 역할들을 함.
+
+
+</script>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>CLICK me</p>
+</body>
+<script>
+    /**
+     * 테스트 코드 : js는 생각보다 많은 일을 할 수 있습니다.
+    const para = document.querySelector("p");
+    para.addEventListener("click", updateName)
+
+    function updateName() {
+        const name = prompt("enter new Name");
+        ara.textContent = 'Player 1: ${name}';
+    }
+    */
+
+
+
+    // #. js에서 변수를 선언하는 방법
+    var a = 1;
+    let b = 2;
+    const c = 3;
+
+    // # var와 let, const의 차이
+    // # var = 전역변수 선언
+    // # var는 for / if 같은 블록 밖에서도 참조가 가능하다는 문제점이 있다.
+    if (true) {
+        var innerVal = "안녕하세요";
+    }
+    // 이렇게 하면 if문 밖에서도 innerVal이 실행되어 버림
+
+    // # let / const 가 등장
+    // let은 변수이고 const는 상수
+    // let은 데이터 재할당이 가능
+    let Val = "ㅎㅇㅎㅇ"
+    val = 1;
+    console.log("val ==> ", val); // 1;
+
+    // # const는 재할당 시 에러가 발생함
+    // const constVal = "ㅎㅇㅎㅇ"
+    // constVal = 1;
+    // console.log(constVal);
+
+
+    // #. alert(a) --> 가급적 사용하지 말것;
+    document.write(a, b, c);
+    // document.writeln : 적고 나서 한칸을 뗌
+    // #. HTML에 직접 데이터를 씁니다
+    // 파이썬의 프린트와 같은 역할을 합니다
+    console.log(a, b, c);
+    // #. document 콘솔에 데이터를 입력합니다.
+
+    var plus = a + b;
+
+    console.log(plus)
+
+
+    // #. 숫자에서 이 세개의 연산자는 같다
+    // a = a+1;
+    // a += 1;
+    a++;
+    console.log(a)
+
+    // a = a-1;
+    // a -= 1;
+    // a--;
+
+    console.log(a % 2); // 나머지
+    console.log(a / 2); // 몫
+    console.log(a * 2); // 곱
+
+    console.log(1 == "1"); // 타입 추론 없이
+    console.log(1 === "1"); // 타입 추론 있음(엄격한 검사)
+
+
+
+
+
+    // # if문 작성법
+    // if문을 쓸때는 타입추론까지 엄격하게 하여 작성한다.
+    // if (a === 1) {
+    //   console.log("a는 1입니다");
+    // } else {
+    //    console.log("a는 1이 아닙니다");
+    // }
+
+    // if ~ else if 와 switch ~ case문 --> 사용은 취향차이
+    // break를 안쓰면 밑에꺼까지 한번에 실행이 되어버림
+
+    a = 90
+    if (a === 100) {
+        console.log("a의 학점은 A입니다");
+    } else if (a === 90) {
+        console.log("a의 학점은 B입니다");
+    } else if (a === 80) {
+        console.log("a의 학점은 C입니다");
+    } else {
+        console.log("a의 학점은 F입니다");
+    }
+
+    switch (a) {
+        case 100:
+            console.log("a의 학점은 A입니다");
+            break;
+        case 90:
+            console.log("a의 학점은 A입니다");
+            break;
+    }
+
+
+    // # for i in range(1,10): 구문과 같은 구문
+    // for (let i=0 --> i를 체크해서 시작하겠다; i<10 --> 조건, i++ --> 실행시킬 내용)
+
+    for (let i = 0; i < 10; i++) {
+        console.log(`${i} 번째 데이터 입니다.`)
+    }
+
+    // # js는 따로 list가 없고 배열이 그 역할을 대신함
+    let array = [1, 2, "안녕", 23, "저는 ~~~ 입니다", ["1", "2"]];
+    console.log(array)
+    // 구글 콘솔에서 쳐도 호출됨
+
+    // # for data in array:
+    for (let data of array) {
+        console.log(data)
+    }
+
+    // # 구구단을 찍으세요
+    for (let i = 1; i <= 9; i++) {
+        document.writeln(`${i}*9=${i * 9}`)
+    }
+
+    // # 파이썬에선 데이터 딕셔너리라고 함.
+    // # js에선 객체라고 함.
+    const obj = {
+        a: 1,
+        b: 2,
+        c: "안녕"
+    };
+
+    console.log(obj);
+</script>
+
+</html>

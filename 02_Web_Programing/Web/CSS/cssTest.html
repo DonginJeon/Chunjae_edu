@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+
+        }
+
+        .img-container__anchor {
+            text-decoration: none;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .img_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .img-container__image {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>우리가 처음 만든 웹</h1>
+    <!-- 순서가 없는 리스트-->
+    <div class="container">
+        <div class="container_column">
+            <h3>오늘 저녁 장보기 메뉴</h3>
+            <ul>
+                <li>milk</li>
+                <li>eggs</li>
+                <li>bread</li>
+                <li>hummus</li>
+
+            </ul>
+        </div>
+
+        <div class="container__column">
+            <!-- 순서가 있는 리스트-->
+            <h3>오늘의 할일</h3>
+            <ol>
+                <li><em>공부</em>하기</li>
+                <li>정리하기</li>
+                <li>귀가하기</li>
+                <li><strong>휴식</strong>하기</li>
+            </ol>
+        </div>
+    </div>
+
+
+
+
+    <div class="img-container">
+        <!-- 하이퍼링크는 다른 사이트로의 이동을 의미한다-->
+        <a class="img-container__anchor" href="https://naver.com">네이버로 가기
+
+        </a>
+
+        <img class="img-container__image" src="/02_Web_Programing/IMGS/다운로드.png"></img>
+    </div>
+</body>
+
+</html>

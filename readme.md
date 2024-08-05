@@ -1,5 +1,51 @@
-- **0802**
-웹 개발 첫 수업
+# **0805**
+  ## 수업
+  - CSS 
+    개발(디자인)
+  - JS 
+    문법(연산)
+
+    구구단
+
+    변수 선언하는 방법
+      let var const
+      차이 비교
+
+    IF문 
+
+    Switch ~ case문
+
+    for문
+
+    함수
+      만드는법
+      map
+      filter
+      join
+
+      
+      [array를 다루는 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+    - 웹 개발
+      사용자=>행동(마우스, 키보드)
+              [event]
+      이벤트가 일어났을때 어떤 일을 해야한다고 정해주는 것-listener,handler 
+
+  ## 프로그래머스
+```
+- enumerate
+  >>> for i, letter in enumerate(['A', 'B', 'C'], start=1):
+  ...     print(i, letter)
+  ...
+  1 A
+  2 B
+  3 C
+```
+
+
+
+# **0802**
+  ## 수업
   - 깃에 대한 첫 이해
   - vscode에서 하던 것과는 다르게 깃배쉬를 통해 첫 실습
   - 소스트리
