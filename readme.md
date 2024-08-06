@@ -1,3 +1,32 @@
+
+# **0806**
+  ## 수업
+  - API
+
+    [postman](https://www.postman.com/)
+
+    [insomnia](https://insomnia.rest/download)
+    
+    rest client 설치
+    
+    get을 통한 url 확인
+
+    - 실습
+      - 고양이 사이트 핸들링
+      - 날씨어플 만들기
+
+  - 데이터베이스
+    - 마리아 DB 설치 -> 집에서도 설치하기
+    - 간단한 테이블 만들어보기
+
+    
+    
+  ## 프로그래머스
+
+
+
+
+
 # **0805**
   ## 수업
   - CSS 
@@ -19,9 +48,11 @@
 
     함수
       만드는법
+      foreach
       map
       filter
-      join
+      find, findindex
+      join 
 
       
       [array를 다루는 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array)
@@ -31,7 +62,7 @@
               [event]
       이벤트가 일어났을때 어떤 일을 해야한다고 정해주는 것-listener,handler 
 
-    - 자바 실습
+    - 자바 실습(숫자맞추기)
 
   ## 프로그래머스
 ```
