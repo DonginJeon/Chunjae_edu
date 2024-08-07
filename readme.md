@@ -1,3 +1,47 @@
+# **0806**
+  ## 복습
+  - JS
+    - 변수선언
+      - var : 잘 안씀
+      - let : 변수
+      - const : 상수
+
+    - IF문
+    - For문
+    - function 
+      function [이름]()
+
+      const [이름] = function
+
+                   = () =>
+
+      변수 안에 들어갈 수 있음
+
+    - [배열] -> list
+      { } -> 데이터 딕셔너리
+    
+    - 웹에 주는 영향
+      웹에는 다큐먼트(html 요소(dom)를 가지고 있음- 돔에 대한 접근을 할 수 있게 해줌)가 있음. -> 요즘은 queryselector로 대체됨
+
+      요소 + contents
+          
+           + css
+          
+           + eventlisener
+
+  - API
+    - 서버 -> 클라이언트
+    - fetch("URL").then()
+
+
+  - SQL
+    - DB를 관리하고 싶으면 DBMS(오라클, mysql)를 사용
+    - 여러가지 문법
+    - 조인
+    - 외래키
+    - 파이썬과 연결하여 사용
+
+
 
 # **0806**
   ## 수업
@@ -21,10 +65,6 @@
 
     
     
-  ## 프로그래머스
-
-
-
 
 
 # **0805**
@@ -64,16 +104,7 @@
 
     - 자바 실습(숫자맞추기)
 
-  ## 프로그래머스
-```
-- enumerate
-  >>> for i, letter in enumerate(['A', 'B', 'C'], start=1):
-  ...     print(i, letter)
-  ...
-  1 A
-  2 B
-  3 C
-```
+   
 
 
 

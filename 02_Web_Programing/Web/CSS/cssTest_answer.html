@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .img-container__anchor {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: ce
+            nter;
+            gap: 20px;
+        }
+
+        .img-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .img-container__image {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>우리가 처음 만든 웹</h1>
+    <!-- 순서가 없는 리스트 -->
+    <div class="container">
+        <div class="container__column">
+            <h3>오늘 저녁 장보기 메뉴</h3>
+            <!-- 앞에 리스트임을 의미하는 무언가가 생긴다. ⚫-->
+            <ul>
+                <li>우유</li>
+                <li>계란</li>
+                <li>빵</li>
+                <li>오트밀</li>
+            </ul>
+        </div>
+
+        <div class="container__column">
+            <h3>오늘의 할일</h3>
+            <!-- 순서가 있기 때문에 자동으로 번호가 생긴다. -->
+            <ol>
+                <li><em>강의하기</em></li>
+                <li>
+                    <strong>오늘 목록</strong> 정리하기
+                </li>
+                <li>집에 가기</li>
+                <li>데이터베이스 수업 준비하기</li>
+            </ol>
+        </div>
+    </div>
+
+
+    <div class="img-container">
+        <!-- 하이퍼링크는 다른사이트로의 이동을 의미한다.-->
+        <a class="img-container__anchor" href="https://papago.naver.com/">파파고 이용하기</a>
+
+        <img class="img-container__image" src="/imgs/download.jpg"></img>
+    </div>
+</body>
+
+</html>

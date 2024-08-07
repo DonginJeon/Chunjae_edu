@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number guessing game</title>
+</head>
+
+<body>
+    <h1>Number Guessing game</h1>
+    <p>100까지의 수 중에서 하나를 고르세요. 예상 숫자가 작은지 큰지를 말해드립니다.</p>
+    <div class="form">
+        <label for="guessField">Enter a guess: </label>
+        <input type="number" min="1" max="100" required id="guessField" class="guessField">
+        <input type="submit" value="Submit guess" class="guessSubmit">
+    </div>
+
+    <div class="resultParas">
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+        <p class="lowOrHi"></p>
+    </div>
+
+
+    <script>
+        let randomNumber = math.floor(Math.random() * 100) + 1;
+        const guesses = document.querySelector(".guesses");
+        const lastResult = document.querySelector(".lastresult");
+        const lowOrHi = document.querySelector(".lowOrHi");
+        const guessSubmit = document.querySelector(".guessSubmit");
+        const guessField = document.querySelector(".guessField");
+
+        let guessCount = 1;
+        let reserButton;
+
+        function checkGuess() {
+            const userGuess = Number(guessField.value);
+
+            if (guessCount === 1) {
+                guesses.textContent = 'Prevbious guesses';
+            }
+            guesses.textContent += userGuess + " ";
+
+            if (userGuess === randomNumber) {
+                lastResult.textContent = "승리";
+                lastResult.style.backgroundColor = 'green';
+                lowOrHi.textContent = '';
+                setGameOver();
+            }
+            else if (guessCount === 10) {
+                lastResult.textContent = "게임오버"
+                lowOrHi.textContent = '';
+                setGameOver();
+
+            }
+            else {
+                lastResult.textContent = 'wrong !';
+                lastResult.style.backgroundColor = 'red';
+                if (userGuess < randomNumber) {
+                    lowOrHi.textContent = '낮음';
+
+                }
+                else if (userGuess > randomNumber) {
+                    lowOrHi.textContent = '높음'
+                }
+            }
+
+            guessCount++;
+            guessField.value = '';
+            guessField.focus();
+
+        }
+
+        guessSubmit.addEventListener("click", checkGuess);
+
+        function setGameOver() {
+            guessField.disabled = true;
+            guessSubmit.disabled = true;
+            reserButton = document.createElement("button");
+            reserButton.textContent = "start new game";
+            document.body.append(reserButton);
+            reserButton.addEventListener("click", resetGame);
+        }
+
+        function resetGame() {
+            guessCount = 1;
+            const resetParas = document.querySelectorAll(".resultParas p")
+            for (const resetPara of resetParas) {
+                resetPara.textContent = "";
+
+
+            }
+
+            resetButton.parentNode.removeChild(resetButton); // 리셋 버튼 삭제
+            // (자기 자신을 직접 지울 방법은 없으므로 부모 노드로 올라가서 자식 노드인 자신을 삭제)
+
+            guessField.disabled = false; // 입력창 활성화
+            guessSubmit.disabled = false; // 입력 버튼 활성화
+            guessField.value = ""; // 입력창 초기화
+            guessField.focus(); // 입력창에 다시 focus() 기능 추가
+
+            lastResult.style.backgroundColor = "white"; // 결과창 배경색 초기화
+
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    </script>
+</body>
+
+</html>
