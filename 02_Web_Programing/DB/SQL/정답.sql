@@ -1,3 +1,11 @@
+
+delete from tb_user;
+
+delete from tb_board_comment;
+
+delete from tb_board;
+
+set foreign_key_checks = 1;
 -- 1. 유저 데이터를 3건 추가합니다.
 INSERT INTO tb_user (
 	login_id, login_password, name, address, phone	
@@ -38,8 +46,8 @@ WHERE id = 3;
 -- 아닐 경우 : IS NOT NULL
 SELECT id, login_id FROM tb_user WHERE tb_user.phone IS NULL
 UPDATE tb_user SET
-	phone = '010-333-3333'
-WHERE phone IS NULL
+	phone = '010-323-3333'
+WHERE phone IS null;
 
 -- 5. 최근에 만들어진 tb_board의 데이터 삭제하기
 DELETE FROM tb_board WHERE id = 10;
@@ -67,7 +75,7 @@ INSERT INTO tb_board_comment (
 (4, 1, '댓글입니다 7'),
 (2, 3, '댓글입니다 8'),
 (3, 2, '댓글입니다 9'),
-(2, 1, '댓글입니다 10')
+(2, 1, '댓글입니다 10');
 
 
 -- 2. user_id가 2번인 tb_board_comment의 댓글 값을 ‘원본 댓글’ + ‘-’ + ‘id’로 변경해 봅시다.
@@ -97,6 +105,28 @@ CREATE TABLE tb_board_comment (
 -- 기존에 있는 테이블에 FK 추가하기.
 ALTER TABLE tb_board ADD CONSTRAINT
 FOREIGN KEY(user_id) REFERENCES tb_user(id);
+
+
+-- 데이터를 조인하여 가져오기
+select * from tb_board as board
+inner join tb_board_comment as comment
+	on board.id = comment.board_id
+where board.id=3;
+
+
+-- left outer join은 상위 테이블에서 하위 테이블로 내려갑니다
+select  *
+from 
+	tb_board as board
+	left outer join tb_board_comment as comment
+		on board.id = comment.board_id;
+
+		
+-- right outer join은 하위 테이블에서 상위 테이블로 올라갑니다
+select * 
+from 
+	tb_board_comment as comment
+	right outer join tb_board as board on board.id = comment.board_id ;
 
 
 -- 유저 데이터 3건 추가하기
