@@ -8,6 +8,7 @@ from flask import (
     request,
     session,
     url_for,
+    jsonify
 )
 from db.connection import db_connect
 
@@ -48,6 +49,39 @@ def show_entries():
         entries = cur.fetchall()
 
     return render_template("show_entries.html", entries=entries)
+
+
+# 하고 싶은 것
+# 지금의 FLASK는 HTML만 받음.
+# HTML뿐만 아니라 json이라고 하는 데이터 형태로 reponse를 전달하고 싶다.
+@app.route("/api/entries")
+def json_entries():
+    SQL = """
+        select id, title, text
+        from entries 
+        order by id desc
+    """
+    entries = []
+    with db_connect() as conn:
+        with conn.cursor() as cur:
+            cur.execute(SQL)
+            entries = cur.fetchall()
+
+    # 파이선이 가지고 있는 튜플, 리스트, 딕셔너리를 
+    # json 문법에 맞게(배열, 자바스크립트 객체)로 변경
+    return jsonify(entries)
+
+# 실습
+@app.route("/entries")
+def view_entries():
+    # 0. 데이터베이스나 지금 이 사이트를 이용하여 데이터를 추가
+    # 1. 이 라우터가 빈 HTML을 반환하도록 한다
+    # 2. JS에서 fetch()를 이용해서 entries 데이터를 호출
+    # 3. 자바 스크립트를 활용하여 화면에 entries의 제목들이 나오도록 해보자
+    return render_template("entries.html")
+        
+
+
 
 ## 주소 뒤에다 입력해서 가져오는 건 GET 요청, POST만 썻기 때문에 아래에선 오류가 발생
 # request(get,post,update,delete) 중에 post 요청만 받겠다

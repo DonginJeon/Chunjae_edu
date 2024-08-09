@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      <ul>
+        <!-- 페이지 이동은 a태그를 이용 -->
+        <!-- 주소를 정확히 칠 것, 여기서 http임(s를 안 붙이고) -->
+        <!-- 여기까지는 다른 사람들이 내 페이지에 접속할 수 없음 -->
+        <!-- 두 가지 방법으로 개선할 수 있음. -->
+        <!-- 1. 상대경로를 사용-> 아래 http://127.0.0.1:5000을 지우고 /만 남겨둠 => 켜져있는 주소로 감 -->
+        <!-- 2. 파이썬 라우터를 이용하는 방식 url_for()-->
+
+        <li>
+          <a href="/">메인화면으로 가기</a>
+        </li>
+        {% if session.user %}
+          <li>
+            <!--url_for란 괄호 안에 내용을 찾아 url로 가는 것-->
+            <a href="{{url_for('login')}}">로그인</a>
+          </li>
+        {% else %}
+          <li>
+            <!--url_for란 괄호 안에 내용을 찾아 url로 가는 것-->
+            <a href="{{url_for('logout')}}">로그아웃</a>
+          </li>
+          {%endif%}
+          <li>
+            <a href="http://127.0.0.1:5000/board">게시글 목록</a>
+          </li>
+
+        </ul>
+        <!--hr은 줄을 만들어 주는 태그-->
+        <hr>
+      </div>
+      {% block body %}{% endblock %}
+    </body>
+
+  </html>
