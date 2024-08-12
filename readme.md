@@ -1,22 +1,99 @@
+# **0812**
+
+## 수업
+
+- ### ORM 설명 및 실습
+
+  ```
+  1. SQL을 사용할 필요가 없어짐, 파이썬 코드로 데이터베이스를 간접적으로 핸들링
+  2. 쿼리에 대한 공부는 필요함
+  ```
+
+- ### 장고
+  ```
+  1. 웹 앱을 만들기 위한 기업용 프레임워크
+  2. MVT라는 개념이 필요 => 면접 단골질문
+  3. manage.py가 반겨줌(장고를 핸들링할 수 있게 무언가를 주는 역할) => 앱도 만듬
+  4. admin 지원 - 모델을 선언하고 화면에 미치는 영향을 정의하고 그 모델로 admin환경을 만듦.
+  ```
+
+```
+
+```
+
+- 터미널에서 빠져나올땐 exit()
+- 터미널 폴더로 들어가기 cd .\\
+- 뒤로 가기 cd ../
+
+```
+
+```
+
+conda install django
+
+python - django --version => 장고 설치 확인
+
+PS C:\Users\user\Desktop\Chunjae_edu> django-admin startproject mytestsite
+
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\mytestsite>
+
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\mytestsite> python manage.py runserver
+
+cd ../
+
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO> django-admin startproject locallibrary
+
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO> cd .\locallibrary\
+
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> python manage.py startapp catalog
+
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> PS C:\Users\user\Desktop\Chunjae_edu> django-admin startproject mytestsite
+
+```
+
+```
+
+로컬라이브러리의 세팅에서 데이터베이스 부분 마리아 디비로 바꾸기
+models.py
+urls.py
+
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> python manage.py makemigrations => 이걸하면 적용이 됨
+
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> python manage.py migrate = > 이거까지 해야 데이터베이스에 적용
+
+```
+
+```
+
+admin에 정리
+
+```
+
+
+
 # **0809**
 
 ## 수업
 
 - 데이터베이스에 있던 정보로 사이트 만들기
 
-  ```
-  - 스테틱과 템플릿, 두개의 폴더 생성
+```
+
+- 스테틱과 템플릿, 두개의 폴더 생성
   templates(끝에 s를 붙이는 것이 중요)
   static
-  ```
+
+```
 
 - 정리
 
 ```
+
 1. 만들땐 목록 먼저 만들자 - SQL을 활용해서
 2. 게시판 목록(boards)을 만듦
    url_for - 함수 이름과 매개변수(kwarg)를 가지고 라우터 함수를 찾아서 라우터로 간다
-```
+
+````
 
 # **0808**
 
@@ -223,3 +300,4 @@ plotly
 - 옵션에 대한 숙지 미숙
   개선사항
 - 각 차트가 언제 쓰이고 해석하는 경험 많이 쌓기
+````

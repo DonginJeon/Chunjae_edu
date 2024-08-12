@@ -4,7 +4,6 @@ from db.connection import db_connect
 
 app = Flask(__name__)
 # 서버에 바로 수정사항이 반영되도록 옵션을 지정
-app.debug = True
 app.secret_key = "rvq629mvr79t3v5v2v91l3p1itxcgifj"
 
 @app.route("/")
