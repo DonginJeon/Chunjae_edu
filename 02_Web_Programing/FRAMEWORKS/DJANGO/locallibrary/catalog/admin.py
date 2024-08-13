@@ -40,7 +40,8 @@ class BookAdmin(admin.ModelAdmin):
 class BookInstanceAdmin(admin.ModelAdmin):
     list_filter = ("status","due_back")
     list_display = ("book", "status","due_back","id")
-
+    # 상세화면에서 데이터를 표시하는 방법
+    # 섹션을 원하는 형태로 배치
     fieldsets = (
-        (None, {"fields" : ("book","imprint","id")}), ("Availablity",{"fields": ("status","due_back")})
+        (None, {"fields" : ("book","imprint","id")}), ("Availablity",{"fields": ("status","due_back","borrower")})
     )

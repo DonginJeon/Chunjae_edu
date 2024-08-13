@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
+from datetime import date
 
 # 랜덤값을 만들어준다.
 import uuid
@@ -51,7 +53,11 @@ class Bookinstance(models.Model):
     imprint = models.CharField(max_length=200)
     # 데이터베이스 안에서 date값은 string
     due_back = models.DateField(null=True, blank=True)
-    
+    # AUTH_USER_MODEL > django에서 기본적으로 제공하는 유저 모델
+    borrower = models.ForeignKey(settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL, null=True, blank=True
+    )
+
     # 공통코드
     LOAN_STATUS = (
         ('m', 'Maintenance'),
@@ -75,11 +81,23 @@ class Bookinstance(models.Model):
 
 class Meta:
     ordering = ['due_back']
+    permissions = (("can_mark_returned","Set book as returned"),)
 
 def __str__(self):
         """String for representing the Model object."""
         return f'{self.id} ({self.book.title})'
+
+
+@property
+def is_overdue(self):
+    # 반납기한이 오늘보다 빠른가
+    return bool(self.due_back and date.today()>self.due_back)
     
+
+
+
+
+
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -92,6 +110,10 @@ class Author(models.Model):
 
     def get_absolute_url(self):
         return reverse('author-detail', args=[str(self.id)])
+    
+    def __str__(self):
+        return f"{self.first_name}. {self.last_name}"
+    
     
 
 
