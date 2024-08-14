@@ -1,15 +1,118 @@
+# **0814**
+
+## 수업
+
+- ### 장고 마무리
+
+  ```
+  장고 정리
+  HTML(파일명까지 장고에서 제시하는대로 해야함), 요청, DB => 웹개발을 위한 필요한 모든 것을 가지고 있는 프레임워크, 유연하지 못하다는 것이 최대 단점
+  프레임워크 수업에서 배웠던 것, 장고, 플라스크에 대한 공부 뿐만 아니라 프레임워크 사용 전반에 대한 맛을 봄. 시키는 대로 해야함
+
+  ```
+
+  ```
+  장고 API
+  불러오기
+  ```
+
+  ```
+  웹 스크레이핑 -> 만들어둔 사이트를 활용
+  로그인이 필요한 사이트에서 로그인을 하고 스크레이핑 시도
+  특별한 보안으로 막힌 곳: 쿠키 같은 것. 주소를 정확히 치고 새로고침하거나 다시 들어가면 달라지니 잘 넣기
+  ```
+
+  ```
+  - 시험 정리
+  # HTML(뼈대) CSS() JS(기능)
+    JS에서 fetch를 통해 데이터를 가져올 수 있음
+  ```
+
+# 웹 : 네트워크가 거미줄처럼 연결
+
+    서버(컴퓨터)와 클라이언트(브라우저)의 관계가 중요함.
+      클라이언트 -> 서버 : request
+        1. method : GET POST UPDATE DELETE...
+          GET과 POST의 차이 알기: GET은 URL로 다 해결, POST는 안에 body 데이터가 들어감
+        2. param(url안에 들어간 식별자 값, ?)
+        3. API
+      서버 -> 클라이언트 : response
+        1. status : 성공(200), 실패 - 유저(400), 서버(500)
+        2. data, body: JSON,HTML,text
+
+    * 프레임워크와 라이브러리 차이 알기
+        프레임워크는 개발순서, 방법을 정해줌
+
+# 프레임워크
+
+    플라스크
+      @(데코레이터)에 따라 움직임: 함수에 대한 라벨, 함수의 시작과 끝에 무언가 처리를 할 수 있음 => 함수를 제어하는 함수
+      @app.route("/") -> url을 받아서 원하는 함수 실행
+
+      -특징
+      1. 경량
+      2. 확장성
+      => 처음 시작, 스타트업, 신기능에 많이 사용, 사수를 잘 만나야함
+
+    장고
+      -MVT - model: 비즈니스 로직을 가지는 세상에 있는 것을 추상화한 것,
+            view: 모델과 템플릿을 연결하여 원하는 화면을 구성하는 것,
+            template: UI
+
+      -ORM => 객체(모델) 관계(DB) 맵핑(
+
+      -명령어
+        startproject
+        createapp
+        runserver
+        migrate(makemigration, migrate)
+
+      - 파일
+        settings.py
+        urls.py
+        views.py
+        admin.py
+        template/HTML(템플릿 문법 들어감)
+
+      - 특징
+      1. 기업용
+      2. all-in-one
+      3. 크고 무겁다
+      )
+
+```
+
+`
+
+## 연휴 계획
+
+```
+
+- 0815
+  웹 배웠던 거 복습
+
+- 0816
+  웹 복습 + 파이썬 예제 및 테스트 정리
+- 0817
+  유데미
+- 0818
+
+```
+
 # **0813**
 
 ## 수업
 
 - ### 장고 개발
-  ```
-  - 아래의 터미널 명령어는 기억할 것.
+```
+
+- 아래의 터미널 명령어는 기억할 것.
   python manage.py runserver
   python .\manage.py makemigrations
   python .\manage.py migrate
-  ```
-  [참고 사이트](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Home_page)
+
+```
+[참고 사이트](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Home_page)
 
 # **0812**
 
@@ -17,69 +120,73 @@
 
 - ### ORM 설명 및 실습
 
-  ```
-  1. SQL을 사용할 필요가 없어짐, 파이썬 코드로 데이터베이스를 간접적으로 핸들링
-  2. 쿼리에 대한 공부는 필요함
-  ```
+```
+
+1. SQL을 사용할 필요가 없어짐, 파이썬 코드로 데이터베이스를 간접적으로 핸들링
+2. 쿼리에 대한 공부는 필요함
+
+```
 
 - ### 장고
 
-  ```
-  1. 웹 앱을 만들기 위한 기업용 프레임워크
-  2. MVT라는 개념이 필요 => 면접 단골질문
-  3. manage.py가 반겨줌(장고를 핸들링할 수 있게 무언가를 주는 역할) => 앱도 만듬
-  4. admin 지원 - 모델을 선언하고 화면에 미치는 영향을 정의하고 그 모델로 admin환경을 만듦.
-  ```
+```
 
-  ```
+1. 웹 앱을 만들기 위한 기업용 프레임워크
+2. MVT라는 개념이 필요 => 면접 단골질문
+3. manage.py가 반겨줌(장고를 핸들링할 수 있게 무언가를 주는 역할) => 앱도 만듬
+4. admin 지원 - 모델을 선언하고 화면에 미치는 영향을 정의하고 그 모델로 admin환경을 만듦.
 
-  - 터미널에서 빠져나올땐 exit()
-  - 터미널 폴더로 들어가기 cd .\\
-  - 뒤로 가기 cd ../
+```
 
-  ```
+```
 
-  ```
+- 터미널에서 빠져나올땐 exit()
+- 터미널 폴더로 들어가기 cd .\\
+- 뒤로 가기 cd ../
 
-  conda install django
+```
 
-  python - django --version => 장고 설치 확인
+```
 
-  PS C:\Users\user\Desktop\Chunjae_edu> django-admin startproject mytestsite
+conda install django
 
-  PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\mytestsite>
+python - django --version => 장고 설치 확인
 
-  PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\mytestsite> python manage.py runserver
+PS C:\Users\user\Desktop\Chunjae_edu> django-admin startproject mytestsite
 
-  cd ../
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\mytestsite>
 
-  PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO> django-admin startproject locallibrary
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\mytestsite> python manage.py runserver
 
-  PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO> cd .\locallibrary\
+cd ../
 
-  PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> python manage.py startapp catalog
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO> django-admin startproject locallibrary
 
-  PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> PS C:\Users\user\Desktop\Chunjae_edu> django-admin startproject mytestsite
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO> cd .\locallibrary\
 
-  ```
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> python manage.py startapp catalog
 
-  ```
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> PS C:\Users\user\Desktop\Chunjae_edu> django-admin startproject mytestsite
 
-  로컬라이브러리의 세팅에서 데이터베이스 부분 마리아 디비로 바꾸기
-  models.py
-  urls.py
+```
 
-  PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> python manage.py makemigrations => 이걸하면 적용이 됨
+```
 
-  PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> python manage.py migrate = > 이거까지 해야 데이터베이스에 적용
+로컬라이브러리의 세팅에서 데이터베이스 부분 마리아 디비로 바꾸기
+models.py
+urls.py
 
-  ```
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> python manage.py makemigrations => 이걸하면 적용이 됨
 
-  ```
+PS C:\Users\user\Desktop\Chunjae_edu\02_Web_Programing\FRAMEWORKS\DJANGO\locallibrary> python manage.py migrate = > 이거까지 해야 데이터베이스에 적용
 
-  admin에 정리
+```
 
-  ```
+```
+
+admin에 정리
+
+```
 
 # **0809**
 
@@ -87,37 +194,39 @@
 
 - 데이터베이스에 있던 정보로 사이트 만들기
 
-  ```
+```
 
-  - 스테틱과 템플릿, 두개의 폴더 생성
-    templates(끝에 s를 붙이는 것이 중요)
-    static
+- 스테틱과 템플릿, 두개의 폴더 생성
+  templates(끝에 s를 붙이는 것이 중요)
+  static
 
-  ```
+```
 
 - 정리
 
-  ```
+```
 
-  1. 만들땐 목록 먼저 만들자 - SQL을 활용해서
-  2. 게시판 목록(boards)을 만듦
-    url_for - 함수 이름과 매개변수(kwarg)를 가지고 라우터 함수를 찾아서 라우터로 간다
+1. 만들땐 목록 먼저 만들자 - SQL을 활용해서
+2. 게시판 목록(boards)을 만듦
+   url_for - 함수 이름과 매개변수(kwarg)를 가지고 라우터 함수를 찾아서 라우터로 간다
 
-  ```
+```
 
 # **0808**
 
 ## 할일
 
 ```
+
 파이썬 필수템설치
-  unibeautify
-  장고
-  settings.json-> 사용자설정-> 슬랙 내용 붙여넣기
+unibeautify
+장고
+settings.json-> 사용자설정-> 슬랙 내용 붙여넣기
 라이브 서버
 마리아 디비
 디비버
 플라스크 설치
+
 ```
 
 ## 수업
@@ -261,7 +370,7 @@
     - 하이퍼링크
     - [참고사이트](https://developer.mozilla.org/ko/docs/Learn/HTML)
 
-* **0730~0801**
+# **0730~0801**
   데이터분석 팀 프로젝트
 
   - 새롭게 습득한 기술
@@ -269,7 +378,7 @@
     반복문을 통한 딕셔너리 생성
     마크다운 문법
 
-* **0725**
+# **0725**
 
 plotly
 
@@ -310,6 +419,8 @@ plotly
 - 옵션에 대한 숙지 미숙
   개선사항
 - 각 차트가 언제 쓰이고 해석하는 경험 많이 쌓기
+
+```
 
 ```
 

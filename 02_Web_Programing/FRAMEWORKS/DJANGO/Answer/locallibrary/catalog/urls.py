@@ -20,4 +20,13 @@ urlpatterns = [
     path(
         "book/<uuid:pk>/renew/", views.renew_book_librarian, name="renew-book-librarian"
     ),
+    path("borrowed", views.AllBorrowedBookListView.as_view(), name="all-borrowed"),
+    path("author/create", views.AuthorCreate.as_view(), name="author-create"),
+    path("author/<int:pk>/update", views.AuthorUpdate.as_view(), name="author-update"),
+    path("author/<int:pk>/delete", views.AuthorDelete.as_view(), name="author-delete"),
+]
+
+urlpatterns += [
+    path("api/books", views.BookListAPIView.as_view()),
+    path("api/book_instances", views.BookInstanceAPIView.as_view()),
 ]

@@ -45,7 +45,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     # 카탈로그 어플리케이션을 등록하기 위해서는 카탈로그 폴더 > apps.py > Config 클래스를 여기에 등록
-    "catalog.apps.CatalogConfig"
+    "catalog.apps.CatalogConfig",
+
+    # api형태로 데이터를 리턴하기 위해 djangorestframework 라이브러리를 등록
+    "rest_framework",
+
 ]
 
 MIDDLEWARE = [

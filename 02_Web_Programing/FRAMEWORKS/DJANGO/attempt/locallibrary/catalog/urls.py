@@ -17,13 +17,19 @@ urlpatterns = [
     # /catalog/book/??? > 클래스로 생성
     path("author/<int:pk>", views.AuthorDetailView.as_view(), name="author-detail"),
     path("mybooks", views.LoanedBooksByUserListView.as_view(), name = "my-borrowed"),
-    path("book/<uuid:pk>/renew/", views.renew_book_librarian, name= "renew-book-librarian")
+    path("book/<uuid:pk>/renew/", views.renew_book_librarian, name= "renew-book-librarian"),
+
+    path("borrowed", views.AllBorrowedBookListView.as_view(), name = "all-borrowed"),
+
+    path("author/create/", views.AuthorCreate.as_view(), name = 'author-create'),
+    path("author/<int:pk>/update/", views.AuthorCreate.as_view(), name = 'author-update'),
+    path("author/<int:pk>/delete/", views.AuthorCreate.as_view(), name = 'author-delete'),
 
 
+]
 
-
-
-
-
+urlpatterns += [
+    path("api/books/", views.BookListAPIView.as_view()),
+    path("api/book_instances", views.BookinstanceAPIView.as_view())
 ]
 

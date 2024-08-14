@@ -1,0 +1,13 @@
+// GET 요청 테스트
+GET http://localhost:8000/catalog/api/books
+
+POST http://localhost:8000/catalog/api/books
+Content-Type: application/json
+
+{
+    "title": "Starwars",
+    "Summary" : "a galaxy far far away",
+    "isbn" : "1111222233331",
+    "author" : "GeorgeLucas",
+    "genre" : [1,2]
+}

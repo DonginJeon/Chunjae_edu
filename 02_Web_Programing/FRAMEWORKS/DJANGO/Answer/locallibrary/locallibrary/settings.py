@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     # catalog 어플리케이션을 등록하기 위해서는
     # 폴더  > apps.py > Config 클래스를 여기에 등록
     "catalog.apps.CatalogConfig",
+    # API형태로 데이터를 리턴하기 위해 djangorestframework 라이브러리를 등록
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -91,10 +93,10 @@ DATABASES = {
         # 'NAME': BASE_DIR / 'db.sqlite3',
         "ENGINE": "django.db.backends.mysql",
         "NAME": "test_db",
-        "USER": "testuser",
-        "PASSWORD": "testuser",
+        "USER": "user",
+        "PASSWORD": "1234",
         "HOST": "127.0.0.1",
-        "PORT": "3307",
+        "PORT": "3306",
     }
 }
 
