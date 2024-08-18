@@ -1,3 +1,10 @@
+# **0818**
+## 복습
+- ### [데코레이터](https://kevinitcoding.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%ACPython-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%AC%EC%9A%B4-%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%EC%9B%90%EB%A6%AC) 이해 
+- ### 할일
+  - 교육PC 내 데이터베이스 보고 오기
+
+
 # **0815**
 ## 복습
 - ### 숫자 맞추기 게임

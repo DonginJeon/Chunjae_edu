@@ -1,8 +1,8 @@
 from flask import Flask, abort, flash, g, redirect, render_template, request, session, url_for, jsonify
 from db.connection import db_connect
 
-USERNAME="testuser"
-PASSWORD="testuser"
+USERNAME="root"
+PASSWORD="1234"
 
 # 플라스크 사용
 app = Flask(__name__)
