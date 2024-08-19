@@ -1,3 +1,19 @@
+# **0819**
+## 수업
+- ### 머신러닝 시작
+  - [수업필기](./03_Machine_learning/Random_forest/0819.md)
+  - .T를 통해 행렬을 뒤집을 수 있음
+  - 넘파이 어레이로 바꾸면 더 빠름
+  - 클래스 초기화
+  ```
+  class A:
+    __init__(self):
+
+  a = A()
+  ```
+  - 데이터사이언스 추가 공부 [링크](https://datascienceschool.net/02%20mathematics/02.01%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80%20%ED%96%89%EB%A0%AC.html)
+  - 표집에 대한 추가 공부
+
 # **0818**
 ## 복습
 - ### [데코레이터](https://kevinitcoding.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%ACPython-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%AC%EC%9A%B4-%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%EC%9B%90%EB%A6%AC) 이해 
