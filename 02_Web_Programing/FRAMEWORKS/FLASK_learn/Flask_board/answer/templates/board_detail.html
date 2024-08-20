@@ -21,6 +21,17 @@
     </div>
 
     <div id="comments"></div>
+    <div>
+      {% if session.user %}
+        <form method="post">
+          <input type="hidden" name="board_id" value="{{board.id}}">
+          <textarea name="comment"></textarea>
+          <button id="insert_comment">댓글 작성</button>
+        </form>
+
+      {% endif %}
+
+    </div>
 
   </div>
   <script>
@@ -40,5 +51,11 @@
     }
 
     getComments();
+    const button2 = document.querySelector("#insert_comment");
+    if (button2) {
+      button2.addEventListener("click", () => {
+        location.href = "{{url_for('insert_comment', board_id=board.id)}}";
+      });
+    }
   </script>
 {% endblock body %}

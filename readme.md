@@ -1,34 +1,60 @@
-# **0819**
+# **0820**
+
 ## 수업
+
+- [수업필기](./03_Machine_learning/0820.md)
+- ### 의사결정나무
+  - 반복문을 돌릴 때 전체를 zip()으로 묶어서 사용도 가능
+- ### 당뇨병 실습
+  - 트레인이 1.0인데 테스트가 훨씬 낮으면 과적합의 확률이 높다
+  - y=y>a 라고 하면 y>a에서 나온 불린형이 y에 들어감. 즉 0,1로 바꾸지 않아도 됨
+
+## 공부
+
+- ### 0819 수업 복습
+  - randomforestclassifier
+    - [Feature Selection](https://velog.io/@ssom_d/ML-Feature-Selection) : 필요없는 데이터를 줄이기 위한 방법/가지고 있는 특성 중에서 훈련에 가장 유용한 특성을 선택하는 것
+    - 랜덤포레스트 파일 내의 추가 예제 [풀이](./03_Machine_learning/01_Random_forest/RNA.ipynb)
+      - 콤마를 끊고 싶으면 split을 이용
+      - list(set(리스트))를 하면 중복을 없앤 리스트로 만들어줌
+      - 그냥 리스트에서 .index(원소이름)을 호출하면 원소의 번호를 출력해줌
+
+# **0819**
+
+## 수업
+
 - ### 머신러닝 시작
+
   - [수업필기](./03_Machine_learning/Random_forest/0819.md)
   - .T를 통해 행렬을 뒤집을 수 있음
   - 넘파이 어레이로 바꾸면 더 빠름
   - 클래스 초기화
+
   ```
   class A:
     __init__(self):
 
   a = A()
   ```
+
   - 데이터사이언스 추가 공부 [링크](https://datascienceschool.net/02%20mathematics/02.01%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80%20%ED%96%89%EB%A0%AC.html)
   - 표집에 대한 추가 공부
 
 # **0818**
+
 ## 복습
-- ### [데코레이터](https://kevinitcoding.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%ACPython-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%AC%EC%9A%B4-%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%EC%9B%90%EB%A6%AC) 이해 
+
+- ### [데코레이터](https://kevinitcoding.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%ACPython-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%AC%EC%9A%B4-%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%EC%9B%90%EB%A6%AC) 이해
 - ### 할일
   - 교육PC 내 데이터베이스 보고 오기
 
-
 # **0815**
+
 ## 복습
+
 - ### 숫자 맞추기 게임
- - 그대로 입력하고 원리 이해
+- 그대로 입력하고 원리 이해
 - ### 날씨 맞추기 프로그램
-  
-
-
 
 # **0814**
 
