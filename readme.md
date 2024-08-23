@@ -1,3 +1,8 @@
+# **0823**
+- [실습피드백](./Project/Mini_project_machinelearning_0822/Feedback.md)
+- [보고서피드백](./Project/Mini_project_machinelearning_0822/REPORT_feedback.md)
+  - 피드백 해주신 부분 수정, 피어슨 상관계수를 통해 랜덤포레스트에서 유의미한 영향이 있다고 판단한 부분에 대하여 
+
 # **0822**
 
 - 실습(만료및탈퇴회원)
