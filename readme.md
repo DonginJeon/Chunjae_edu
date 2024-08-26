@@ -1,3 +1,13 @@
+# **0826**
+- 표준화
+  - 로그변환 : 큰 쪽은 y값이 작아지고 작은 쪽은 커짐(왼쪽 치중이면 사용/오른쪽 꼬리가 길때)
+  - 지수변환 : 작은 값들 차이가 적게나고 큰값들 차이는 크게남(그래프의 길이를 조절해서 사용)
+  - standard scaler
+
+- 데이터의 스케일에 따라 결과가 달라질 수 있음
+  - 범위 0~1 : -20~100 이면 min-max scaler를 사용하면 좋음
+
+
 # **0823**
 - [실습피드백](./Project/Mini_project_machinelearning_0822/Feedback.md)
 - [보고서피드백](./Project/Mini_project_machinelearning_0822/REPORT_feedback.md)
