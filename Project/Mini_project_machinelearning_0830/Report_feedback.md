@@ -136,17 +136,29 @@
 
 - ## Age 분포
 
-  - DistPlot
+1. 박스플랏 제거
 
-    ![전체](./Image/Age_dist.png)
+- BoxPlot
 
-  - QQPlot
+  ![전체](./Image/age_box.png)
 
-    ![전체](./Image/Age_qq.png)
+- DistPlot
 
-  - 30대 중반에서 40대 정도에 가장 많은 분포를 보이고 정규분포에 비슷한 형태를 보인다고 할 수 있다. QQ Plot에서는 양 끝단의 값이 직선에서 벗어나는 경향을 보이지만 정규분포에 가깝다고 이야기할 수 있다.
+  ![전체](./Image/Age_dist.png)
+
+- QQPlot
+
+  ![전체](./Image/Age_qq.png)
+
+2. qq플랏을 읽을 때는 표현을 조금 더 구체적으로
+
+- 30대 중반에서 40대 정도에 가장 많은 분포를 보이고 정규분포에 비슷한 형태를 보인다고 할 수 있다. qq플랏에서도 끝이 조금 튀지만 직선형태를 따른다고 할 수 있다.
 
 - ## EstimatedSalary 분포
+
+  - BoxPlot
+
+    ![전체](./Image/salary_box.png)
 
   - DistPlot
 
@@ -156,7 +168,7 @@
 
     ![전체](./Image/salary_qq.png)
 
-  - 70000에서 75000사이에 가장 많은 분포를 보이고 100000이상 임금으로 갈 수록 그 수가 줄어드는 모습을 볼 수 있다. QQ Plot에서는 양 끝단의 값이 직선에서 벗어나는 경향을 보이지만 정규분포에 가깝다고 이야기할 수 있다.
+  - 70000에서 75000사이에 가장 많은 분포를 보이고 100000이상 임금으로 갈 수록 그 수가 줄어드는 모습을 볼 수 있다. qq플랏에서도 직선 형태로 보인다고 하기 어렵다.
 
 - ## 임금과 나이의 관계
 
@@ -164,21 +176,28 @@
 
     ![평균](./Image/regplot.png)
 
-  - 추세선을 보면 나이가 많아질수록 임금이 다소 높아진다는 경향을 볼 수 있는데 그 기울기가 작기 때문에 관계가 있다고 단정하기 어렵다. 18세~20세 초반까지는 100000이상의 고임금이 발생하지 않는 것을 볼 수 있고 금액이 대부분 골고루 분포하는 것을 볼 수 있다. 추가적으로 두 Feature간의 상관관계를 살펴보기 위해 피어슨 상관분석을 실시해보았다.
+3. 양의 상관관계가 있다고 이야기하기 어려움
 
-  - 피어슨 상관분석
+- 추세선을 보면 나이가 많아질수록 임금이 다소 높아진다는 경향을 볼 수 있는데 그 기울기가 작기 때문에 관계가 있다고 단정하기 어렵다. 18세~20세 초반까지는 100000이상의 고임금이 발생하지 않는 것을 볼 수 있고 금액이 대부분 골고루 분포하는 것을 볼 수 있다. 추가적으로 두 Feature간의 상관관계를 살펴보기 위해 피어슨 상관분석을 실시해보았다.
 
-    > correaltion coefficient : 0.15523801797210007, p-value : 0.0018460568005798244
+- 피어슨 상관분석
 
-    > 상관계수가 약 0.16이고 p-value는 약 0.002이다. 하지만 regplot으로 보았을 때 값들이 골고루 분포되어 있기 때문에 상관관계를 갖는다고 이야기하기 어렵다.
+  > correaltion coefficient : 0.15523801797210007, p-value : 0.0018460568005798244
+
+  > 상관계수가 약 0.16이고 p-value는 약 0.002이다. 유의수준을 0.05로 했을 때 기각되므로 나이와 임금사이에는 약한 양의 상관관계가 존재한다고 할 수 있다.
 
 * ## 연령대별 임금 평균
 
-  - Age_label_meanplot
+4. 연령대라벨 이름 변경
+5. 그래프 색상 변경
+6. 임금 단위 추가
+7. 스케일을 줄이자
 
-    ![평균](./Image/Mean.png)
+- Age_label_meanplot
 
-  - 10대에서 가장 낮은 임금 평균을, 50대에서 가장 높은 임금 평균을 볼 수 있다. 30대가 넘어가며 \$70000를 넘어가는 것을 볼 수 있고 2022년 기준 미국 연봉 평균이 77460이라는 것을 보았을 때 어느정도 유사하다고 생각해볼 수 있다.
+  ![평균](./Image/Mean.png)
+
+- 10대에서 가장 낮은 임금 평균을, 50대에서 가장 높은 임금 평균을 볼 수 있다. 30대가 넘어가며 \$70000를 넘어가는 것을 볼 수 있고 2022년 기준 미국 연봉 평균이 77460이라는 것을 보았을 때 어느정도 유사하다고 생각해볼 수 있다.
 
 - ## 구매 비율
 
@@ -195,13 +214,11 @@
 - #### Gender Feature
 
   - 성별은 string 타입임으로 레이블 인코더로 전처리
-
     > 남(1), 여(0)
 
 - #### 연령대 구간에 대한 열 추가
 
   - 연령이 18세에서 60세까지 넓게 포진되어 있는데 연령대별 특징이 있을 수 있기에 10대 단위로 끊어 새로운 열 추가
-
     > 10대 단위로 끊은 이유 : 분포를 보면 30대 중반에 많이 포진되어 있지만 구간별 수의 차이가 나더라도 연령(세대)
 
 - #### 표준화
@@ -224,9 +241,11 @@
 
 ---
 
+8. age와 age_label에서 공선성이 크게 나타남,
+
 - X,y 선정
 
-  - X : "Gender", "Age", "EstimatedSalary"
+  - X : "Gender", "Age", "EstimatedSalary", "Age_label" (scaled)
 
   - y : "Purchased" (0(비구매),1(구매))
 
@@ -294,38 +313,34 @@
 
       - 모델 예측에 각 feature가 어떻게 기여했는지를 확인해보고자 진행
 
-        ```
-        Feature 0 : Gender
-        Feature 1 : EstimatedSalary
-        Feature 2 : Age
-        Feature 3 : Age_label
-        ```
+9. gender는 구분이 명확하기에 고려해볼만 함
+   `Feature 0 : Gender Feature 1 : EstimatedSalary Feature 2 : Age Feature 3 : Age_label`
 
-      - Summary_plot
+   - Summary_plot
 
-        ![Summary_plot](./Image/rfcshap.png)
+     ![Summary_plot](./Image/rfcshap.png)
 
-      - Summary_plot_bar
+   - Summary_plot_bar
 
-        ![Summary_plot](./Image/rfcshap_bar.png)
+     ![Summary_plot](./Image/rfcshap_bar.png)
 
-        - 해석 : Feature_importaces의 결과와 유사하게 나타난다. 특이하게 Age_label은 Feature Value가 높을수록 shap value가 낮은 것을 볼 수 있다.
+     - 해석 : Feature_importaces의 결과와 유사하게 나타난다. 특이하게 Age_label은 Feature Value가 높을수록 shap value가 낮은 것을 볼 수 있다.
 
-    - KFold
-      ```
-      1번째 Cross Validation 정확도: 97.50%
-      2번째 Cross Validation 정확도: 75.00%
-      3번째 Cross Validation 정확도: 90.00%
-      4번째 Cross Validation 정확도: 95.00%
-      5번째 Cross Validation 정확도: 97.50%
-      6번째 Cross Validation 정확도: 82.50%
-      7번째 Cross Validation 정확도: 82.50%
-      8번째 Cross Validation 정확도: 82.50%
-      9번째 Cross Validation 정확도: 82.50%
-      10번째 Cross Validation 정확도: 95.00%
-      -------------------------------------------
-      Cross Validation 정확도 평균: 88.00%
-      ```
+   - KFold
+     ```
+     1번째 Cross Validation 정확도: 97.50%
+     2번째 Cross Validation 정확도: 75.00%
+     3번째 Cross Validation 정확도: 90.00%
+     4번째 Cross Validation 정확도: 95.00%
+     5번째 Cross Validation 정확도: 97.50%
+     6번째 Cross Validation 정확도: 82.50%
+     7번째 Cross Validation 정확도: 82.50%
+     8번째 Cross Validation 정확도: 82.50%
+     9번째 Cross Validation 정확도: 82.50%
+     10번째 Cross Validation 정확도: 95.00%
+     -------------------------------------------
+     Cross Validation 정확도 평균: 88.00%
+     ```
 
 - **LogisticRegression**
 
@@ -420,30 +435,55 @@
 
 - **KMeansClustering**
 
-  - 별도의 y를 설정하지 않고 Feature들을 통해서 구매여부를 클러스터링 해보고자 함
-  - Age, EstimatedSalary, Purchased feature만 활용하여 진행
-  - Elbow Method
+10. 답을 빼고 모델을 돌리기
 
-    ![elbow](./Image/Elbow.png)
+- 별도의 y를 설정하지 않고 Feature들을 통해서 구매여부를 클러스터링 해보고자 함
+- Age, EstimatedSalary, Purchased feature만 활용하여 진행
+- Elbow Method
 
-  - k값 설정 : 구매여부(0,1)로 구분하기 위함과 elbow plot을 확인했을 때 2로 설정
-  - Kmeans Plot
+  ![elbow](./Image/Elbow.png)
 
-    ![kmeans](./Image/kmeans.png)
+- k값 설정 : 구매여부(0,1)로 구분하기 위함과 elbow plot을 확인했을 때 2로 설정
+- Kmeans Plot
+
+  ![kmeans](./Image/kmeans.png)
+
+  - 해석
+    - 연령이 20~30대이면서 임금이 20000~80000 의 집단과 이를 둘러싼 집단으로 나누어짐을 볼 수 있다. 중간 중간 섞여있는 부분이 보이지만 대체로 이렇게 구분되었음을 볼 수 있다.
+
+- Purchased Plot
+
+  ![purchased](./Image/kmeans_pur.png)
+
+  - 해석
+    - 실제 구매 분포에 대한 산점도를 그렸을 때 Kmeans plot과 집단의 분류는 비슷하다고 생각할 수 있다. 중간에 겹치는 부분까지 존재하는 것까지 유사함을 볼 수 있다.
+
+- 실루엣 점수
+
+  - Silhouette Score: 0.538
+  - 실루엣 점수는 높지 않은 것을 볼 수 있는데 이는 모델에 대한 성능보다는 분류가 명확하지 않는 부분이 발생하여 생긴 문제라고 생각된다. 두 그룹 사이에 겹치는 부분이 발생했는데 그런 부분이 점수에 부정적인 영향을 주었을 것이라고 추정된다.
+
+- **KaplanMeierFitter**
+
+  - Age와 EstimatedSalary에 따라 구매 여부에 대한 생존 분석을 실시
+  - 생존시간 : Age와 EstimatedSalary로 각각 지정하여 두번의 시각화 진행
+  - 이벤트 발생 여부 : 구매여부
+  - event_observed=E
+  - EstimatedSalary vs. Purchased
+
+    ![임금](./Image/survsalary.png)
 
     - 해석
-      - 연령이 20~30대이면서 임금이 20000~80000 의 집단과 이를 둘러싼 집단으로 나누어짐을 볼 수 있다. 중간 중간 섞여있는 부분이 보이지만 대체로 이렇게 구분되었음을 볼 수 있다.
+      - \$70000 정도에서 그래프의 기울기가 커짐을 확인할 수 있다.
 
-  - Purchased Plot
+  - Age vs. Purchased
 
-    ![purchased](./Image/kmeans_pur.png)
+    ![나이](./Image/survage.png)
 
-    - 해석
-      - 실제 구매 분포에 대한 산점도를 그렸을 때 Kmeans plot과 집단의 분류는 비슷하다고 생각할 수 있다. 중간에 겹치는 부분까지 존재하는 것까지 유사함을 볼 수 있다.
+    - 40대 중반에서 기울기가 크게 감소함을 볼 수 있다.
 
-  - 실루엣 점수
-    - Silhouette Score: 0.538
-    - 실루엣 점수는 높지 않은 것을 볼 수 있는데 이는 모델에 대한 성능보다는 분류가 명확하지 않는 부분이 발생하여 생긴 문제라고 생각된다. 두 그룹 사이에 겹치는 부분이 발생했는데 그런 부분이 점수에 부정적인 영향을 주었을 것이라고 추정된다.
+  - 해석
+    - Age와 EstimatedSalary가 연속형 자료이기는 하나 시계열적인 특징을 갖는다고 이야기하기는 어렵다. 처음 모델을 구상할 때 대소관계를 통해 시간적인 요소로 활용해보려고 했으나 구매여부에 큰 영향을 주는 Age와 EstimatedSalary가 독립적으로 영향을 주는 feature가 아니기에 생존분석에는 부적합하다고 판단. 그러나 기울기가 크게 변하는 구간(임금, 나이)은 앞선 분석과 어느정도 일치하는 것으로 보임
 
 ### 8. 결론
 
