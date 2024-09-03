@@ -212,13 +212,22 @@
 ---
 
 - **회원별 Feature 정보를 활용한 구매 여부 예측 모델** :
-  - Feature : 데이터셋에서 User ID는 단순 회원 구분용도 임으로 이를 제외하고 Gender, Age, EstimatedSalary, Age_label 이렇게 4가지 feature가 구매여부에 어떤 영향을 주고 feature 들 간에는 서로 어떤 영향이 있는지 보고자 함
+
+  - Feature : 데이터셋에서 User ID는 단순 회원 구분용도 임으로 이를 제외하고 Gender, Age, EstimatedSalary 이렇게 3가지 feature가 구매여부에 어떤 영향을 주고 feature 들 간에는 서로 어떤 영향이 있는지 보고자 함
   - Target : 구매여부인 Purchased를 예측
-  - 분류, 회귀, 클러스터, 생존분석을 통하여 영향을 비교해보고 가장 성능이 좋은 예측 모델 선정.
+  - 분류, 회귀, 클러스터링을 통하여 영향을 비교해보고 가장 성능이 좋은 예측 모델 선정.
+
     - 분류 : RandomForestClassifier
+
+    > 범주형, 연속형 모두를 처리할 수 있고 과적합 방지에 유리하기에 시도.
+
     - 회귀 : LogisticRegression
+
+    > 구매여부를 이진분류를 예측하고자 했기에 로지스틱 회귀도 시도해보고자 함.
+
     - 클러스터 : KMeans
-    - 생존분석 : KaplanMeierFitter
+
+    > 위 모델에서 유의미한 feature 파악 후 클러스터링을 한 결과가 실제 구매 여부 집단과 어느정도 일치하는지 확인해보고자 실시.
 
 ### 7. 모델선정
 
@@ -239,67 +248,57 @@
 
       - score
         - train : 0.9969
-        - test : 0.8875
+        - test : 0.9
       - feature_importaces
 
         ![rfc](./Image/rfc_feature.png)
 
-        - Age와 EstimatedSalary에서 높은 값을 보여주며 EstimatedSalary에서 가장 큰 영향을 준다고 볼 수 있다. 연령대구간은 연령보다 현저히 적은 영향을 보여주는데 임의로 나눈 구간이 연령대의 특징을 반영하지 못한다고 이야기할 수 있고 Age와 EstimatedSalary 간의 관계에서 발생하는 영향도 있을 것으로 예상된다.
+        - Age와 EstimatedSalary에서 높은 값을 보여주며 EstimatedSalary에서 가장 큰 영향을 준다고 볼 수 있다. 성별은 영향이 미비한 것으로 나오지만 shap분석을 통해 feature별 영향까지 살펴보고자 한다.
 
       - confusion_marix
 
         <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+          <style scoped>
+              .dataframe tbody tr th:only-of-type {
+                  vertical-align: middle;
+              }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
+              .dataframe tbody tr th {
+                  vertical-align: top;
+              }
 
-            .dataframe thead th {
-                text-align: right;
-            }
+              .dataframe thead th {
+                  text-align: right;
+              }
 
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Predicted Negative</th>
-              <th>Predicted Positive</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Actual Negative</th>
-              <td>47</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th>Actual Positive</th>
-              <td>4</td>
-              <td>24</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
+          </style>
+          <table border="1" class="dataframe">
+            <thead>
+              <tr style="text-align: right;">
+                <th></th>
+                <th>Actual Positive</th>
+                <th>Actual Negative</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>predicted Positive</th>
+                <td>25</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <th>predicted Positive</th>
+                <td>5</td>
+                <td>47</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
 
-
-        - 해석
-          - 구매하지 않을 것을 예측하여 맞추는 부분이 가장 크게 나타났는데 비구매율이 높은 상태로 모델을 돌렸기에 어느정도 맞게 예측했음을 알 수 있다.
 
     - Shap
 
       - 모델 예측에 각 feature가 어떻게 기여했는지를 확인해보고자 진행
-
-        ```
-        Feature 0 : Gender
-        Feature 1 : EstimatedSalary
-        Feature 2 : Age
-        Feature 3 : Age_label
-        ```
 
       - Summary_plot
 
@@ -309,20 +308,20 @@
 
         ![Summary_plot](./Image/rfcshap_bar.png)
 
-        - 해석 : Feature_importaces의 결과와 유사하게 나타난다. 특이하게 Age_label은 Feature Value가 높을수록 shap value가 낮은 것을 볼 수 있다.
+        - 해석 : Feature_importaces의 결과와 유사하게 나타난다. 대체로 feature value와 shap value가 정비례한다는 것을 알 수 있고 앞서 영향이 가장 적다고 나온 Gender가 다른 Feature에 비해 색의 구분이 좀 더 명확한 것으로 보인다. 즉 방향성이 명확하다는 것을 알 수 있다
 
     - KFold
       ```
       1번째 Cross Validation 정확도: 97.50%
       2번째 Cross Validation 정확도: 75.00%
       3번째 Cross Validation 정확도: 90.00%
-      4번째 Cross Validation 정확도: 95.00%
+      4번째 Cross Validation 정확도: 97.50%
       5번째 Cross Validation 정확도: 97.50%
       6번째 Cross Validation 정확도: 82.50%
       7번째 Cross Validation 정확도: 82.50%
-      8번째 Cross Validation 정확도: 82.50%
+      8번째 Cross Validation 정확도: 85.00%
       9번째 Cross Validation 정확도: 82.50%
-      10번째 Cross Validation 정확도: 95.00%
+      10번째 Cross Validation 정확도: 90.00%
       -------------------------------------------
       Cross Validation 정확도 평균: 88.00%
       ```
@@ -332,9 +331,9 @@
   - 결과
 
   - score
-    - train : 0.8444
-    - test : 0.725
-    - 점수는 RandomForestClassifier에 비해 낮아졌음을 볼 수 있다
+    - train : 0.85
+    - test : 0.7
+    - 점수는 RandomForestClassifier에 비해 다소 낮아졌음을 볼 수 있다
 
 
     - confusion_marix
@@ -356,42 +355,34 @@
         <thead>
           <tr style="text-align: right;">
             <th></th>
-            <th>Predicted Negative</th>
-            <th>Predicted Positive</th>
+            <th>Actual Positive</th>
+            <th>Actual Negative</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th>Actual Negative</th>
-            <td>24</td>
-            <td>1</td>
+            <th>predicted Positive</th>
+            <td>5</td>
+            <td>10</td>
           </tr>
           <tr>
-            <th>Actual Positive</th>
-            <td>10</td>
-            <td>5</td>
+            <th>predicted Positive</th>
+            <td>2</td>
+            <td>23</td>
           </tr>
         </tbody>
       </table>
       </div>
 
-      - 해석
-        - 실제 구매를 비구매로 예측하는 비율이 높아졌다. 구매에 비해 비구매를 많이 예측하는 비율 역시 비구매쪽에 좀 더 편향된 것을 볼 수 있다.
 
     - ROC Curve
 
       ![roc](./Image/roc.png)
 
-    - False Positive Rate가 낮은 구간에서 True Positive Rate이 높은 것을 확인할 수 있다.
+    - AUC 점수는 0.87로 양호한 결과를 볼 수 있다. 또한 False Positive Rate가 낮은 구간에서 True Positive Rate이 높은 것을 확인할 수 있다.
 
     - Shap
       - 모델 예측에 각 feature가 어떻게 기여했는지를 확인해보고자 진행
-      ```
-      Feature 0 : Gender
-      Feature 1 : EstimatedSalary
-      Feature 2 : Age
-      Feature 3 : Age_label
-      ```
       - Summary_plot
 
         ![Summary_plot](./Image/logi_shap.png)
@@ -400,49 +391,96 @@
 
         ![Summary_plot](./Image/logi_shap_bar.png)
 
-      - 랜덤포레스트 모델과 유사한 모습을 볼 수 있다. 즉 임금과 나이가 구매 여부에 영향을 많이 주고 성별이나 연령대는 그에 비해 영향이 적다고 할 수 있다.
+      - 랜덤포레스트 모델과 유사한 모습을 볼 수 있다. Gender의 영향이 좀 더 극단적으로 나누어졌음을 볼 수 있다.
 
     - KFold
       ```
-      1번째 Cross Validation 정확도: 67.50%
-      2번째 Cross Validation 정확도: 67.50%
-      3번째 Cross Validation 정확도: 95.00%
-      4번째 Cross Validation 정확도: 95.00%
-      5번째 Cross Validation 정확도: 100.00%
-      6번째 Cross Validation 정확도: 87.50%
-      7번째 Cross Validation 정확도: 80.00%
-      8번째 Cross Validation 정확도: 80.00%
-      9번째 Cross Validation 정확도: 82.50%
-      10번째 Cross Validation 정확도: 72.50%
-      -------------------------------------------
-      Cross Validation 정확도 평균: 82.75%
+        1번째 Cross Validation 정확도: 67.50%
+        2번째 Cross Validation 정확도: 67.50%
+        3번째 Cross Validation 정확도: 95.00%
+        4번째 Cross Validation 정확도: 95.00%
+        5번째 Cross Validation 정확도: 100.00%
+        6번째 Cross Validation 정확도: 90.00%
+        7번째 Cross Validation 정확도: 80.00%
+        8번째 Cross Validation 정확도: 77.50%
+        9번째 Cross Validation 정확도: 80.00%
+        10번째 Cross Validation 정확도: 70.00%
+        -------------------------------------------
+        Cross Validation 정확도 평균: 82.25%
       ```
 
 - **KMeansClustering**
 
+  - 앞서 회귀와 분류에서 영향이 큰 feature을 확인했고 이를 활용해 클러스팅을 하여 실제 구매여부의 분포에 어느정도 일치하는지 시각화를 해보고자 한다.
+
   - 별도의 y를 설정하지 않고 Feature들을 통해서 구매여부를 클러스터링 해보고자 함
-  - Age, EstimatedSalary, Purchased feature만 활용하여 진행
+
+  - Age, EstimatedSalary만 활용하여 진행
+
   - Elbow Method
 
     ![elbow](./Image/Elbow.png)
 
-  - k값 설정 : 구매여부(0,1)로 구분하기 위함과 elbow plot을 확인했을 때 2로 설정
+  - 기울기를 보았을 때 k=3이 적절하다고 판단.
   - Kmeans Plot
 
     ![kmeans](./Image/kmeans.png)
 
     - 해석
-      - 연령이 20~30대이면서 임금이 20000~80000 의 집단과 이를 둘러싼 집단으로 나누어짐을 볼 수 있다. 중간 중간 섞여있는 부분이 보이지만 대체로 이렇게 구분되었음을 볼 수 있다.
+      - 크게 3개의 집단으로 구분되는데 연령대가 20~30대 정도이며 임금이 적은 2번집단과 임금이 높은 1번 집단, 나이가 많으며 임금이 1번집단에 비해 상대적으로 적은 0번집단으로 나누어진다.
 
   - Purchased Plot
 
     ![purchased](./Image/kmeans_pur.png)
 
     - 해석
-      - 실제 구매 분포에 대한 산점도를 그렸을 때 Kmeans plot과 집단의 분류는 비슷하다고 생각할 수 있다. 중간에 겹치는 부분까지 존재하는 것까지 유사함을 볼 수 있다.
+
+      - 시각적으로 보았을 때 kmeans 클러스터링의 결과에서 집단 2와 나머지로 구분하면 실제 구매 여부 그래프와 어느정도 일치하는 것으로 보인다. kmeans 클러스터링 결과를 집단2(비구매), 나머지(구매) 이렇게 2개의 집단으로 나누어 정확도를 비교해보자.
+      - 정확도 : 0.7825
+      - confusion matrix
+
+        <div>
+        <style scoped>
+            .dataframe tbody tr th:only-of-type {
+                vertical-align: middle;
+            }
+
+            .dataframe tbody tr th {
+                vertical-align: top;
+            }
+
+            .dataframe thead th {
+                text-align: right;
+            }
+
+        </style>
+        <table border="1" class="dataframe">
+          <thead>
+            <tr style="text-align: right;">
+              <th></th>
+              <th>Predicted non_Purchase</th>
+              <th>Predicted Purchase</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Actual non_Purchase</th>
+              <td>175</td>
+              <td>82</td>
+            </tr>
+            <tr>
+              <th>Actual Purchase</th>
+              <td>5</td>
+              <td>138</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+      - 실제 구매여부를 보면 구매집단 가운데 비구매자가 섞여있는데 클러스터링에서는 이런 섞여있는 영역까지는 충분하게 반영되지 않아 나타난 결과로 보인다.
 
   - 실루엣 점수
-    - Silhouette Score: 0.538
+    - Silhouette Score: 0.383
     - 실루엣 점수는 높지 않은 것을 볼 수 있는데 이는 모델에 대한 성능보다는 분류가 명확하지 않는 부분이 발생하여 생긴 문제라고 생각된다. 두 그룹 사이에 겹치는 부분이 발생했는데 그런 부분이 점수에 부정적인 영향을 주었을 것이라고 추정된다.
 
 ### 8. 결론
@@ -451,7 +489,7 @@
 
 - 평가
 
-  - 최종적으로 구매여부를 구분해주는 모델은 kmeans 클러스팅이 가장 적절하다고 생각함. 하지만 어떤 feature가 큰 영향을 주는지 확인하는 목적에서 RandomForestClassifier를 통해 적절한 feature을 통해 클러스터링을 했을때 더 성능이 좋을 것이라 예상. 즉 분류모델을 통해 feature을 확인하고 클러스터링을 하는 방법이 가장 적절하다고 생각했다.
+  - 최종적으로 구매여부를 구분해주는 모델은 RandomForestClassifier를이 가장 적절하다고 생각한다. 이진분류(구매, 비구매)를 예측한다는 점에서 회귀모델보다는 분류모델이 적합해보인다. 클러스터링 결과에서는 k=3일 때 나눈 집단을 2개로 구분했을 때 실제 구매 여부와 어느정도 일치하는 모습을 확인했는데 개인에 대한 예측보다는 연령과 임금에서의 집단의 경향성을 예측하는 지표로는 적절하다고 생각한다.
 
 - 해석
 
@@ -471,7 +509,7 @@
 
 ---
 
-- 처음 연령대를 구분하고자 했을 때 10살 단위로 끊어 구분하려고 했지만 나이에 비해 현저히 떨어지는 영향을 준다는 결과를 볼 수 있었음. 연령대 별로 인원이 골고루 분포하지 않았기에 데이터 비율을 맞추고 나이 구간도 좀 더 명확히 나눠 집단을 세분화할 필요성을 느꼈다.
+- 분석하려는 대상이 어떤 대상이냐에 따라 모델의 종류를 잘 설정하는 것이 중요하다고 생각한다. 이진분류를 예측하는 것이 목적이었기에 여러 분류모델들의 성능을 비교해보며 가장 적절한 분석이 필요했다고 생각이 든다.
 
 * ### 개발 환경
   - Python(v3.12.4)
