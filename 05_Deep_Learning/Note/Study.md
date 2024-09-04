@@ -8,3 +8,8 @@
 
 - [손실함수](https://modulabs.co.kr/blog/loss-function-machinelearning/)
   - 모델이 예측한 값과 실제 값 사이의 차이를 측정하는 함수
+
+* [공부자료](https://m.blog.naver.com/jgyy4775/222642220219)
+* 가중치
+
+* 편향

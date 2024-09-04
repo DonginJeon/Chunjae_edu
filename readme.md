@@ -1,3 +1,17 @@
+# **0904**
+
+- [수업필기](./05_Deep_Learning/Note/0904.md)
+- mkdir : 파이썬에서 폴더생성하는 방법
+- np.random.permutation(X) : 무작위로 X를 섞는 함수
+- pd.cut
+- scatter_matrix
+
+# **0903**
+
+- [수업필기](./05_Deep_Learning/Note/0903.md)
+- 딥러닝 기초
+- 실생활에서 딥러닝이 어떻게 쓰이는가
+
 # **0902**
 
 - 실루엣점수
