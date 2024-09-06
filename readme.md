@@ -1,8 +1,13 @@
+# **0906**
+
+- ## Resnet
+- [마크다운 표만들기](https://www.tablesgenerator.com/markdown_tables)
+
 # **0905**
+
 - [수업필기](./05_Deep_Learning/Note/0905.md)
 - attention : 앞뒤 데이터의 관계를 추론하여 대답을 할때 고려
 - [get_dumies](https://hongl.tistory.com/89)
-
 
 # **0904**
 
