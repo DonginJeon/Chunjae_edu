@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8be727e3c85032f350ebd0ff55ef6bf8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_8be727e3c85032f350ebd0ff55ef6bf8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8be727e3c85032f350ebd0ff55ef6bf8 = L.map(
+                "map_8be727e3c85032f350ebd0ff55ef6bf8",
+                {
+                    center: [37.768725399999994, 128.8711752230673],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b26f79e7d5d63e0bfc83acf9e826b9c1 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_b26f79e7d5d63e0bfc83acf9e826b9c1.addTo(map_8be727e3c85032f350ebd0ff55ef6bf8);
+        
+    
+            var marker_eec0402dee090d334970da2df47a302f = L.marker(
+                [37.768725399999994, 128.8711752230673],
+                {}
+            ).addTo(map_8be727e3c85032f350ebd0ff55ef6bf8);
+        
+    
+        var popup_91bdc2ff1dc7df52196077a0da0d3728 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1878a2630bd5303fd360609e3a7fd992 = $(`<div id="html_1878a2630bd5303fd360609e3a7fd992" style="width: 100.0%; height: 100.0%;">강릉원주대학교</div>`)[0];
+                popup_91bdc2ff1dc7df52196077a0da0d3728.setContent(html_1878a2630bd5303fd360609e3a7fd992);
+            
+        
+
+        marker_eec0402dee090d334970da2df47a302f.bindPopup(popup_91bdc2ff1dc7df52196077a0da0d3728)
+        ;
+
+        
+    
+</script>
+</html>
