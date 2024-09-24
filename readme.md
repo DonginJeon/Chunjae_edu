@@ -1,7 +1,8 @@
 # **0924**
 
 - matplotlib에서 한글 지원하는 방법 : pip install koreanize_matplotlib
-- [수업필기][인사이트](https://www.analyticsinsight.net/)
+- [수업필기]
+- [인사이트](https://www.analyticsinsight.net/)
 - 파이썬 pdf 불러오기
 - [정규표현식](./06_NLP/02_Regular_Expression/attempt.ipynb) - import re
 - 요즘은 자연어 처리나 수학적 통계적 수식을 바로 옮길 수 있는 코딩 기술
