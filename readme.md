@@ -1,3 +1,12 @@
+# **0924**
+
+- matplotlib에서 한글 지원하는 방법 : pip install koreanize_matplotlib
+- [수업필기][인사이트](https://www.analyticsinsight.net/)
+- 파이썬 pdf 불러오기
+- [정규표현식](./06_NLP/02_Regular_Expression/attempt.ipynb) - import re
+- 요즘은 자연어 처리나 수학적 통계적 수식을 바로 옮길 수 있는 코딩 기술
+- [파이썬 추가공부 사이트](https://www.w3schools.com/python/python_regex.asp)
+
 # **0911**
 
 ffmpeg를 호출하는 문제가 있는데 파이썬 3.8의 가상환경을 만들어서 해보자
