@@ -1,3 +1,8 @@
+# **0927**
+
+- 중복행 제거 시 변수.drop_duplicated(subset = [],inpalce = )
+- [쿠팡](https://github.com/hw1004/Data-Full-Stack-Project)
+
 # **0926**
 
 - []안에 반복문을 쓸때 왼쪽부터 읽고 리턴값은 왼쪽으로 보냄
