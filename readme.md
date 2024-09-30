@@ -1,10 +1,12 @@
 # **0927**
 
+- [수업필기](./06_NLP/Note/0927.md)
 - 중복행 제거 시 변수.drop_duplicated(subset = [],inpalce = )
 - [쿠팡](https://github.com/hw1004/Data-Full-Stack-Project)
 
 # **0926**
 
+- [수업필기](./06_NLP/Note/0926.md)
 - []안에 반복문을 쓸때 왼쪽부터 읽고 리턴값은 왼쪽으로 보냄
 - 문자열.count(찾는 것)를 하면 찾는 것이 문자열에서 몇번 나왔는지를 셀 수 있음
 - 상수와 변수
@@ -17,7 +19,7 @@
 # **0924**
 
 - matplotlib에서 한글 지원하는 방법 : pip install koreanize_matplotlib
-- [수업필기]
+- [수업필기](./06_NLP/Note/0924.md)
 - [인사이트](https://www.analyticsinsight.net/)
 - 파이썬 pdf 불러오기
 - [정규표현식](./06_NLP/02_Regular_Expression/attempt.ipynb) - import re
