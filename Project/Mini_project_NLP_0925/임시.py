@@ -77,6 +77,7 @@ def ask_additional_questions(incorrect_answers):
                 else:
                     print(f"틀렸습니다. 다시 시도하세요.")
             except ValueError:
+                
                 print("숫자를 입력해 주세요.")
 
 if __name__ == "__main__":
