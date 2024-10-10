@@ -1,4 +1,4 @@
-WITH filtered_study AS (
+WITH f_study AS (
     SELECT DISTINCT
         s.mcode,
         s.userid,
@@ -8,7 +8,8 @@ WITH filtered_study AS (
     WHERE 1=1
         AND s.yyyy = '2022'
         AND s.mm IN ('01', '02', '03') --> 여기서 분기를 조정해주세요(ex. 1분기 : '01','02','03')
-        AND REGEXP_LIKE(array_join(s.subcontent_name_sequence, ','), '.*인트로.*문제.*')
+        AND REGEXP_LIKE(array_join(s.subcontent_name_sequence, ','), '.*인트로.*')
+        AND REGEXP_LIKE(array_join(s.subcontent_name_sequence, ','), '.*문제.*')
 ),
 filtered_members AS (
     SELECT DISTINCT 
@@ -23,7 +24,7 @@ user_data AS (
         fs.userid,
         fm.grade AS student_grade,
         fs.system_learning_time
-    FROM filtered_study AS fs
+    FROM f_study AS fs
     INNER JOIN filtered_members AS fm ON fs.userid = fm.userid
 ),
 content_meta AS (
@@ -32,7 +33,7 @@ content_meta AS (
     FROM text_biz_dw.e_content_meta AS c
     INNER JOIN text_biz_dw.e_media AS m ON c.mcode = m.mcode
 ),
-study_data_with_content AS (
+study_content AS (
     SELECT 
         ud.mcode,
         ud.userid,
@@ -52,15 +53,15 @@ test_data AS (
 )
 
 SELECT 
-    sdwc.mcode AS "콘텐츠 코드",
-    COUNT(DISTINCT sdwc.userid) AS "학습한 학생 수",
-    ROUND(AVG(sdwc.student_grade), 2) AS "학생의 학년 평균",
-    SUM(sdwc.system_learning_time) AS "학습 시간", 
+    sc.mcode AS "콘텐츠 코드",
+    COUNT(sc.userid) AS "학습한 학생 수",
+    ROUND(AVG(sc.student_grade), 2) AS "학생의 학년 평균",
+    SUM(sc.system_learning_time) AS "학습 시간", 
     td.avg_item_count AS "평가 문항 평균 개수",
     td.avg_correct_count AS "정답 문항 평균 개수",
     td.avg_score AS "평가 점수 평균"
-FROM study_data_with_content AS sdwc
-LEFT JOIN test_data AS td ON sdwc.mcode = td.mcode
+FROM study_content AS sc
+LEFT JOIN test_data AS td ON sc.mcode = td.mcode
 WHERE td.avg_item_count IS NOT NULL
-GROUP BY sdwc.mcode, td.avg_item_count, td.avg_correct_count, td.avg_score
+GROUP BY sc.mcode, td.avg_item_count, td.avg_correct_count, td.avg_score
 ORDER BY "콘텐츠 코드";
