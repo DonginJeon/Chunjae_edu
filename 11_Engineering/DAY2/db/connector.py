@@ -1,6 +1,5 @@
 import psycopg2
-import psycopg2
-import db.pgsql_query as postgresql_qurey
+import db.pgsql_query as postgresql_query
 import db.mysql_query as mysql_query
 import mysql.connector  # MySQL Connector 추가
 
@@ -15,37 +14,44 @@ class DBconnector:
         self.engine = engine
         self.orm_engine = orm_engine
         self.conn_params = dict(
-            host = host,
-            dbname = database,
-            user = user,
-            password = password,
-            port = port
-
+            host=host,
+            dbname=database,
+            user=user,
+            password=password,
+            port=port
         )
-        self.orm_conn_params = f"{orm_engine}://{user}:{password}@{host}:{port}/{database}"
+
+        # 엔진에 따른 SQLAlchemy URL 구성
+        if self.engine == 'mysql':
+            self.orm_conn_params = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{database}"
+        elif self.engine == 'postgresql':
+            self.orm_conn_params = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}"
+        else:
+            raise ValueError("지원하지 않는 엔진입니다. 'mysql' 또는 'postgresql'을 사용하세요.")
+
+        # ORM 연결 생성
         self.orm_connect()
 
+        # 데이터베이스 엔진에 따라 연결 및 쿼리 설정
         if self.engine == 'postgresql':
             self.connect = self.postgres_connect()
-            self.queries = postgresql_qurey.queries
+            self.queries = postgresql_query.queries
 
         elif self.engine == 'mysql':
             self.connect = self.mysql_connect()
             self.queries = mysql_query.queries
 
-        # elif self.engine == 'mysql': ...
-
-    def __enter__ (self):
-        print("Enter")
+    def __enter__(self):
+        print("접속")
         return self
     
     def __exit__(self, exe_type, exe_value, traceback):
         self.conn.close()
-        print("Exit")
-
+        print("종료")
 
     def orm_connect(self):
         self.orm_conn = create_engine(self.orm_conn_params)
+        return self.orm_conn
 
     def postgres_connect(self):
         self.conn = psycopg2.connect(**self.conn_params)
@@ -62,8 +68,5 @@ class DBconnector:
         return self
     
     def get_query(self, table_name):
-        try:
-            _query = self.queries[table_name]
-            return _query
-        except KeyError:
-            raise KeyError(f"'{table_name}' 키가 queries 에 존재하지 않습니다. 현재 있는 키 리스트 : {list(self.queries.keys)}")
+        _query = self.queries.get(table_name)
+        return _query
