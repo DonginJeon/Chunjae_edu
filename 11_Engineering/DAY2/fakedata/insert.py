@@ -14,3 +14,5 @@ def insert_fakedataframe(df: pd.DataFrame) -> bool:
         except Exception as e:
             print(e)
             return False
+        
+        
