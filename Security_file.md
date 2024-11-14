@@ -1,1 +1,0 @@
-- 0822 천재 만료 회원 데이터 분석 : project > mini project 0822
